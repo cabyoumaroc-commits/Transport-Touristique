@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Cab 4 You Maroc</title>
+  <meta name="description" content=" Cab 4 You Maroc for airport transfers, city tours, and travel services across Morocco." />
+    <meta name="keywords" content="Cab 4 You Maroc,cab For you,cab 4 you, car for you,car 4 you, car for you morocco, transport agency Casablanca, private transfer Casablanca, airport transfer Casablanca, tourist transport Morocco, Casablanca taxi service, Casablanca chauffeur service, Morocco private driver, Casablanca car rental with driver, day trips from Casablanca, Casablanca to Marrakech transfer, Casablanca to Rabat transfer, Casablanca airport shuttle, VIP transport Morocco, luxury car service Casablanca, guided tours Casablanca, Morocco travel agency, transport touristique Casablanca, Morocco city tours, Casablanca excursions, Casablanca sightseeing, business transport Casablanca, private tours Morocco, airport pickup Casablanca, airport drop off Casablanca, Casablanca minivan hire, Morocco 4x4 tours, transport company Casablanca, Casablanca transport service, Morocco driver service, tourism Casablanca, transport Casablanca Morocco, Casablanca private taxi, Casablanca driver hire, Morocco vacation transport, Casablanca travel service, Casablanca tourist agency, transport and tourism Casablanca, transport touristique Morocco, Casablanca tourism, best transport agency Casablanca, reliable taxi Casablanca, Casablanca transport for tourists, Morocco chauffeur tours, Morocco airport transport, Casablanca luxury transfers, Morocco tour packages, transport in Casablanca for tourists." />
+
+  <style>
+    :root{
+      --cab4you-bg:#0f1724;
+      --cab4you-card-bg:rgba(255,255,255,0.03);
+      --cab4you-text:#e6eef8;
+      --cab4you-muted:#94a3b8;
+      --cab4you-accent:#ff6b35;
+      --cab4you-radius:14px;
+      font-family:Inter,system-ui,sans-serif;
+    }
+
+    .cab4you-wrapper{
+      background:var(--cab4you-bg);
+      color:var(--cab4you-text);
+      padding:24px;
+      border-radius:var(--cab4you-radius);
+      box-shadow:0 6px 24px rgba(0,0,0,0.4);
+      max-width:1100px;
+      margin:auto;
+    }
+
+    .cab4you-search{
+      display:flex;
+      gap:8px;
+      margin-bottom:18px;
+    }
+    .cab4you-search input{
+      flex:1;
+      padding:10px 14px;
+      border-radius:10px;
+      border:1px solid rgba(255,255,255,0.05);
+      background:transparent;
+      color:inherit;
+    }
+    .cab4you-search button{
+      background:var(--cab4you-accent);
+      color:#fff;
+      border:none;
+      border-radius:10px;
+      padding:10px 16px;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    .cab4you-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+      gap:16px;
+    }
+
+    .cab4you-card{
+      background:var(--cab4you-card-bg);
+      border:1px solid rgba(255,255,255,0.05);
+      border-radius:var(--cab4you-radius);
+      overflow:hidden;
+      display:flex;
+      flex-direction:column;
+      transition:transform .25s ease, box-shadow .25s ease;
+    }
+    .cab4you-card:hover{
+      transform:translateY(-6px);
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .cab4you-thumb{
+      width:100%;
+      height:140px;
+      object-fit:cover;
+      display:block;
+    }
+
+    .cab4you-body{
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .cab4you-body h3{
+      margin:0;
+      font-size:16px;
+      color:#fff;
+    }
+
+    .cab4you-body p{
+      margin:0;
+      font-size:13px;
+      color:var(--cab4you-muted);
+      flex:1;
+    }
+
+    .cab4you-btn{
+      align-self:flex-start;
+      background:linear-gradient(90deg,var(--cab4you-accent),#ff9a5b);
+      color:#fff;
+      text-decoration:none;
+      padding:8px 12px;
+      border-radius:8px;
+      font-weight:600;
+      font-size:13px;
+    }
+
+    @media (max-width:520px){
+      .cab4you-wrapper{padding:16px;}
+    }
+  </style>
+</head>
+<body>
+  <div class="cab4you-wrapper">
+    <div class="cab4you-search">
+      <input id="cab4you-search-input" type="search" placeholder="Search links..." />
+      <button id="cab4you-search-clear">Clear</button>
+    </div>
+
+    <section class="cab4you-grid" id="cab4you-grid"></section>
+  </div>
+
+  <script>
+    const cab4youItems = [
+      {title:"morocco private driver service",desc:"Private airport transfers — fast & safe service.",slug:"morocco private driver service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/04/Design-sans-titre-56.png"},
+      {title:"Airport Transfer Casablanca",desc:"Comfortable rides to/from Mohammed V airport.",slug:"morocco private driver service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/04/Design-sans-titre-75.png"},
+      {title:"Marrakech Day Tours",desc:"Explore Marrakech: souks, palaces, gardens.",slug:"morocco private driver service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-30-a-09.09.31_c149362d.jpg"},
+      {title:"Private Driver Services",desc:"Hire a professional driver anywhere in Morocco.",slug:"morocco private driver service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/04/Design-sans-titre-49.png"},
+      {title:"Agadir Transfers",desc:"Transfers and tours in Agadir region.",slug:"morocco-private-driver-service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/04/Design-sans-titre-50.png"},
+      {title:"Fez Airport Transfer",desc:"Safe and punctual transfer to Fez airport.",slug:"morocco-private-driver-service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/04/Design-sans-titre-64.png"},
+      {title:"Tangier City Transfers",desc:"Reliable transfers across Tangier & its ports.",slug:"morocco-private-driver-service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-30-a-09.14.54_11ffbafc.jpg"},
+      {title:"Casablanca City Tours",desc:"Guided city tours in Casablanca.",slug:"morocco-private-driver-service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-30-a-09.19.48_60d063eb.jpg"},
+      {title:"Ouarzazate Desert Tours",desc:"Visit studios and Sahara with local drivers.",slug:"morocco-private-driver-service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-30-a-09.14.55_92c76ce5.jpg"},
+      {title:"Essaouira Transfers",desc:"Trips to Essaouira beaches & medina.",slug:"morocco-private-driver-service",img:"https://cab4youmaroc.com/wp-content/uploads/2025/08/WhatsApp-Image-2025-08-30-a-09.14.55_9745015e.jpg"}
+      // you can continue to 40
+    ];
+
+    const cab4youBase = "https://cab4youmaroc.com/";
+    const grid = document.getElementById("cab4you-grid");
+
+    function createCard(item){
+      const url = cab4youBase + item.slug;
+      const card = document.createElement("article");
+      card.className = "cab4you-card";
+      card.innerHTML = `
+        <img src="${item.img}" alt="${item.title}" class="cab4you-thumb" loading="lazy">
+        <div class="cab4you-body">
+          <h3>${item.title}</h3>
+          <p>${item.desc}</p>
+          <a class="cab4you-btn" href="${url}" target="_blank" rel="noopener">Visit</a>
+        </div>`;
+      return card;
+    }
+
+    function render(items){
+      grid.innerHTML="";
+      items.forEach(item=>grid.appendChild(createCard(item)));
+    }
+
+    render(cab4youItems);
+
+    // Search
+    const searchInput=document.getElementById("cab4you-search-input");
+    const clearBtn=document.getElementById("cab4you-search-clear");
+    searchInput.addEventListener("input",e=>{
+      const term=e.target.value.toLowerCase();
+      const filtered=cab4youItems.filter(i=>(i.title+i.desc).toLowerCase().includes(term));
+      render(filtered);
+    });
+    clearBtn.addEventListener("click",()=>{
+      searchInput.value="";
+      render(cab4youItems);
+      searchInput.focus();
+    });
+  </script>
+</body>
+</html>
